@@ -48,7 +48,14 @@ def basic():
 		districtlabels = list(d.keys())
 		districtvalues = list(d.values())
 		maxdistrictvalue = max(districtvalues)
-	return render_template(template, datalength=datalength, data=data, classlabels=classlabels, classvalues=classvalues, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue)
+		d = dict(data['Resolution'].value_counts())
+		reslabels = list(d.keys())
+		resvalues = list(d.values())
+		maxresvalue = max(resvalues)
+		d = dict(data['DayOfWeek'].value_counts())
+		daylabels = list(d.keys())
+		dayvalues = list(d.values())
+	return render_template(template, datalength=datalength, data=data, classlabels=classlabels, classvalues=classvalues, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, daylabels=daylabels, dayvalues=dayvalues)
 
 @app.errorhandler(404)
 def error(e):
