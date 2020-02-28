@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<div class="d-sm-flex align-items-center justify-content-between mb-4">
+		<h1 class="h3 mb-0 text-gray-800">Dashboard!</h1>
+	</div>
+
+
+	<form action="/" method='POST'>
+
+		<!-- Content Row -->
+		<div class="row">
+
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Class</div>
+								<select class="custom-select custom-select-sm" name="usercrimeclass">
+									<option value = 0 selected>None</option>
+									{%for i in range(0, crimeclasslen)%}
+									<option value = "{{uniquecrimeclass[i]}}">{{uniquecrimeclass[i]}}</option>
+									{%endfor%} 
+								</select>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-money-check-alt fa-2x px-2 text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">District</div>
+								<select class="custom-select custom-select-sm" name="userdistrict">
+									<option value = 0 selected>None</option>
+									{%for i in range(0, districtlen)%}
+									<option value = "{{uniquedistrict[i]}}">{{uniquedistrict[i]}}</option>
+									{%endfor%} 
+								</select>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-map-marker-alt fa-2x px-2 text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-warning shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Resolution</div>
+								<select class="custom-select custom-select-sm" name="userresolution">
+									<option value = 0 selected>None</option>
+									{%for i in range(0, reslen)%}
+									<option value = "{{uniqueres[i]}}">{{uniqueres[i]}}</option>
+									{%endfor%} 
+								</select>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-gavel fa-2x px-2 text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-danger shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Day of Week</div>
+								<select class="custom-select custom-select-sm" name="userday">
+									<option value = 0 selected>None</option>
+									{%for i in range(0, daylen)%}
+									<option value = "{{uniquedays[i]}}">{{uniquedays[i]}}</option>
+									{%endfor%} 
+								</select>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar-week fa-2x px-2 text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Department ID</div>
+								<input type="text" class="form-control" value=0 id="exampleFormControlInput1" placeholder="Search by department ID" name="userdepartment">
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-building fa-2x px-2 text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">Incident ID</div>
+								<input type="text" class="form-control" value=0 id="exampleFormControlInput1" placeholder="Search by incident ID" name="userincident">
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-road fa-2x px-2 text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-warning shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Date</div>
+								<input type="date" class="form-control" value=0 id="exampleFormControlInput1" name="userdate" min="2016-01-01" max="2016-12-31">
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-comments fa-2x px-2 text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<button class="d-sm-inline-block btn btn-sm btn-primary shadow-sm" type="submit" name="submit"><i class="fas fa-download fa-sm text-white-50"></i> Get results!</a></button>
+	</form>
+
+</div>
+<!-- /.container-fluid -->
+
+
+{% endblock %}
