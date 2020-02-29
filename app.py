@@ -44,18 +44,28 @@ def basic():
 		d = dict(data['CrimeClass'].value_counts())
 		classlabels = list(d.keys())
 		classvalues = list(d.values())
+		maxclassvalue = max(classvalues)
+		maxclasslabel = classlabels[classvalues.index(maxclassvalue)]
+		maxclasspercentage = int(maxclassvalue * 100 / sum(classvalues))
 		d = dict(data['PdDistrict'].value_counts())
 		districtlabels = list(d.keys())
 		districtvalues = list(d.values())
 		maxdistrictvalue = max(districtvalues)
+		maxdistrictlabel = districtlabels[districtvalues.index(maxdistrictvalue)]
+		maxdistrictpercentage = int(maxdistrictvalue * 100 / sum(districtvalues))
 		d = dict(data['Resolution'].value_counts())
 		reslabels = list(d.keys())
 		resvalues = list(d.values())
 		maxresvalue = max(resvalues)
+		maxreslabel = reslabels[resvalues.index(maxresvalue)]
+		maxrespercentage = int(maxresvalue * 100 / sum(resvalues))
 		d = dict(data['DayOfWeek'].value_counts())
 		daylabels = list(d.keys())
 		dayvalues = list(d.values())
-	return render_template(template, datalength=datalength, data=data, classlabels=classlabels, classvalues=classvalues, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, daylabels=daylabels, dayvalues=dayvalues)
+		maxdayvalue = max(dayvalues)
+		maxdaylabel = daylabels[dayvalues.index(maxdayvalue)]
+		maxdaypercentage = int(maxdayvalue * 100 / sum(dayvalues))
+	return render_template(template, datalength=datalength, data=data, classlabels=classlabels, classvalues=classvalues, maxclasslabel=maxclasslabel, maxclasspercentage=maxclasspercentage, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, maxdistrictlabel=maxdistrictlabel, maxdistrictpercentage=maxdistrictpercentage, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, maxreslabel=maxreslabel, maxrespercentage=maxrespercentage, daylabels=daylabels, dayvalues=dayvalues, maxdaylabel=maxdaylabel, maxdaypercentage=maxdaypercentage)
 
 @app.errorhandler(404)
 def error(e):

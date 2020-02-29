@@ -14,36 +14,96 @@
 	<div class="row">
 
 		<!-- Donut Chart -->
-		<div class="col-xl-4 col-lg-5">
+		<div class="col-xl-4 col-lg-3">
 			<div class="card shadow mb-4">
 				<!-- Card Header - Dropdown -->
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Crime Class</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Division by Crime Class</h6>
 				</div>
 				<!-- Card Body -->
 				<div class="card-body">
 					<div class="chart-pie py-4">
-						<canvas id="crimeClassChart"></canvas>
+						<canvas id="crimeClassChart" width="300" height="300"></canvas>
 					</div>
-					<hr>
-					Division of selected crimes by class of crime.
+					<!-- <hr>
+					Division of selected crimes by class of crime. -->
 				</div>
 			</div>
 		</div>
 
 		<!--bar chart-->
-		<div class="col-xl-8 col-lg-7">
+		<div class="col-xl-5 col-lg-6">
 			
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">District</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Division by District</h6>
 				</div>
 				<div class="card-body">
 					<div class="chart-bar">
-						<canvas id="districtChart"></canvas>
+						<canvas id="districtChart" width="600" height="400"></canvas>
 					</div>
-					<hr>
-					Division of selected crimes by district where the crime occured.
+					<!-- <hr>
+					Division of selected crimes by district where the crime occured. -->
+				</div>
+			</div>
+		</div>
+
+		<!-- Earnings (Monthly) Card Example -->
+		<div class="col-xl-3 col-lg-3 mb-4">
+			<div class="row my-2">
+				<div class="col">
+					<div class="card border-left-primary shadow h-100 mb-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-3">
+									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">class: {{ maxclasslabel}}</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxclasspercentage }}%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-2">
+				<div class="col">
+					<div class="card border-left-success shadow h-100 mb-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-3">
+									<div class="text-xs font-weight-bold text-success text-uppercase mb-1">district: {{ maxdistrictlabel }}</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800"> {{ maxdistrictpercentage }}%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-2">
+				<div class="col">
+					<div class="card border-left-warning shadow h-100 mb-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-3">
+									<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">resolution: {{ maxreslabel}}</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxrespercentage }}%</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row my-2">
+				<div class="col">
+					<div class="card border-left-danger shadow h-100 mb-2">
+						<div class="card-body">
+							<div class="row no-gutters align-items-center">
+								<div class="col mr-3">
+									<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">day: {{ maxdaylabel}}</div>
+									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxdaypercentage }}%</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -58,14 +118,12 @@
 			
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Resolution</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Division by Resolution</h6>
 				</div>
 				<div class="card-body">
 					<div class="chart-bar">
 						<canvas id="resolutionChart"></canvas>
 					</div>
-					<hr>
-					Division of selected crimes by manner of resolution.
 				</div>
 			</div>
 		</div>
@@ -75,15 +133,13 @@
 			<div class="card shadow mb-4">
 				<!-- Card Header - Dropdown -->
 				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Day</h6>
+					<h6 class="m-0 font-weight-bold text-primary">Division by Day</h6>
 				</div>
 				<!-- Card Body -->
 				<div class="card-body">
 					<div class="chart-pie pt-4">
 						<canvas id="dayChart"></canvas>
 					</div>
-					<hr>
-					Division of selected crimes by day of week on which they occur.
 				</div>
 			</div>
 		</div>
@@ -323,9 +379,14 @@
 				caretPadding: 10,
 			},
 			legend: {
-				display: false
+				display: true,
+				position: 'bottom',
+				fullWidth: true,
+				labels: {
+					boxWidth: 10,
+				}
 			},
-			cutoutPercentage: 80,
+			cutoutPercentage: 0,
 		},
 	});
 </script>
@@ -553,9 +614,14 @@
 				caretPadding: 10,
 			},
 			legend: {
-				display: false
+				display: true,
+				position: 'bottom',
+				fullWidth: true,
+				labels: {
+					boxWidth: 10,
+				}
 			},
-			cutoutPercentage: 80,
+			cutoutPercentage: 0,
 		},
 	});
 </script>
