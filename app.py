@@ -1,7 +1,5 @@
 from flask import *
 import pandas as pd
-import matplotlib.pyplot as plt
-from scipy import stats
 import numpy as np
 
 app = Flask(__name__)
