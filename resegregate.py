@@ -18,4 +18,4 @@ for index in range(len(df)):
 	if df.loc[index, 'Category'] in ['ARSON', 'STOLEN PROPERTY', 'VANDALISM']:
 		df.loc[index, 'CrimeClass'] = 'PROPERTY DAMAGE'
 
-df.to_csv (r'C:\Users\parekh\Downloads\bytecamp\reclassified.csv', index = None, header=True)
+df.to_csv (r'C:\Users\ACER\Downloads\bytecamp\criminal offense\reclassified.csv', index = None, header=True)
