@@ -4,8 +4,7 @@ An administrative tool to query, visualize and predict San Fransisco crimes by c
 ## Instructions:
 1. Clone the repository.
 2. ```pip install virtualenv``` to allow you to create a virtual environment.
-3. Navigate to ```criminalvenv``` and activate it:
-```Scripts\activate```
+3. Navigate to the virtual environment and activate it:
 4. Install dependenices of ```requirements.txt```: 
 ```
 pip install -r requirements.txt
@@ -18,4 +17,4 @@ python3 app.py
 
 Open http://localhost:5000/ to view.
 
-Don't forget to deactivate ```criminalvenv``` when you are done!
+Don't forget to deactivate the virtual environment when you are done!
