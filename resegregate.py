@@ -1,11 +1,11 @@
 import pandas as pd
 
-df = pd.read_csv("withdate.csv")
+df = pd.read_csv("policefinal.csv")
 
-df = df.drop(['Date'], axis=1)
-df = df.rename({"SingleDate": "Date"})
+# df = df.drop(['Date'], axis=1)
+# df = df.rename({"SingleDate": "Date"})
 
-# df['Date'] = df['Date'].astype('str')
+df['Month'] = df['Month'].astype(str)
 
 # for index in range(len(df)):
 #     mydate = df.loc[index, 'Date']
@@ -29,4 +29,4 @@ df = df.rename({"SingleDate": "Date"})
 # 	if df.loc[index, 'Category'] in ['ARSON', 'STOLEN PROPERTY', 'VANDALISM']:
 # 		df.loc[index, 'CrimeClass'] = 'PROPERTY DAMAGE'
 
-df.to_csv (r'C:\Users\ACER\Downloads\bytecamp\criminal offense\policefinal.csv', index = None, header=True)
+df.to_csv(r'C:\Users\ACER\Downloads\bytecamp\criminal offense\reclassified.csv', index = None, header=True)
