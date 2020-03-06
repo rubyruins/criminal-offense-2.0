@@ -18,6 +18,9 @@ def basic():
 	day = request.form['userday']
 	department = request.form['userdepartment']
 	incident = request.form['userincident']
+	date = request.form['userdate']
+	date = date.split("-")
+	date = date[2] + "-" + date[1] + "-" + date[0]
 	data = df.copy(deep = True)
 	if crimeclass != '0':
 		data = data[data['CrimeClass'] == crimeclass]
@@ -31,6 +34,8 @@ def basic():
 		data = data[data['PdId'] == int(department)]
 	if incident != '0':
 		data = data[data['IncidntNum'] == int(incident)]
+	if date != '0':
+		data = data[data['Date'] == str(date)]
 	print(crimeclass, district, resolution, department, incident)
 	print(data)
 	data.reset_index(drop=True, inplace=True)
