@@ -1,8 +1,17 @@
 import pandas as pd
 
-df = pd.read_csv("policefinal.csv")
+df = pd.read_csv("withdate.csv")
 
-df['Date'] = df['Date'].astype('str')
+df = df.drop(['Date'], axis=1)
+df = df.rename({"SingleDate": "Date"})
+
+# df['Date'] = df['Date'].astype('str')
+
+# for index in range(len(df)):
+#     mydate = df.loc[index, 'Date']
+#     mydate = mydate.split("-")
+#     # df.loc[index, 'Month'] = mydate[1]
+#     df.loc[index, 'SingleDate'] = mydate[0]
 
 # for index in range(len(df)):
 # 	if df.loc[index, 'Category'] in ['DRIVING UNDER THE INFLUENCE', 'NON-CRIMINAL','DRUNKENNESS','TRESPASS', 'DISORDERLY CONDUCT','GAMBLING', 'LOITERING', 'LIQUOR LAWS']:
@@ -20,4 +29,4 @@ df['Date'] = df['Date'].astype('str')
 # 	if df.loc[index, 'Category'] in ['ARSON', 'STOLEN PROPERTY', 'VANDALISM']:
 # 		df.loc[index, 'CrimeClass'] = 'PROPERTY DAMAGE'
 
-df.to_csv (r'C:\Users\ACER\Downloads\bytecamp\criminal offense\reclassified.csv', index = None, header=True)
+df.to_csv (r'C:\Users\ACER\Downloads\bytecamp\criminal offense\policefinal.csv', index = None, header=True)
