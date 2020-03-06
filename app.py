@@ -20,8 +20,6 @@ def basic():
 	incident = request.form['userincident']
 	date = request.form['userdate']
 	month = request.form['usermonth']
-	print(month)
-	print(type(month))
 	data = df.copy(deep = True)
 	if crimeclass != '0':
 		data = data[data['CrimeClass'] == crimeclass]
@@ -39,7 +37,7 @@ def basic():
 		date = date.split("-")
 		date = date[2] + "-" + date[1] + "-" + date[0]
 		data = data[data['Date'] == str(date)]
-	if month:
+	if month != '0':
 		data = data[data['Month'] == int(month)]
 	print(crimeclass, district, resolution, department, incident)
 	print(data)
