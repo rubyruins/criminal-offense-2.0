@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Search results{% endblock %}
+
+{% block content %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+	<!-- Page Heading -->
+	<h1 class="h3 mb-2 text-gray-800">Here's what we found.</h1>
+	<p class="mb-4">Our engine returned a total of {{ datalength }} results.</p>
+	
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered table-xs" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th>IncidntNum</th>
+							<th>CrimeClass</th>
+							<th>PdDistrict</th>
+							<th>DayOfWeek</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Resolution</th>
+							<th>View details</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<th>IncidntNum</th>
+							<th>CrimeClass</th>
+							<th>PdDistrict</th>
+							<th>DayOfWeek</th>
+							<th>Date</th>
+							<th>Time</th>
+							<th>Resolution</th>
+							<th>View details</th>
+						</tr>
+					</tfoot>
+					<tbody>
+						<form>
+							{%for i in range(0, datalength)%}
+							<tr>
+								<td>{{ data.loc[i, 'IncidntNum'] }}</td>
+								<td>{{ data.loc[i, 'CrimeClass'] }}</td>
+								<td>{{ data.loc[i, 'PdDistrict'] }}</td>
+								<td>{{ data.loc[i, 'DayOfWeek'] }}</td>
+								<td>{{ data.loc[i, 'Date'] }}</td>
+								<td>{{ data.loc[i, 'Time'] }}</td>
+								<td>{{ data.loc[i, 'Resolution'] }}</td>
+								<td>View all details</td>
+							</tr>
+							{%endfor%}
+						</form>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
