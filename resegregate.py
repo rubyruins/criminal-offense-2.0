@@ -1,11 +1,13 @@
 import pandas as pd
 
 df = pd.read_csv("policefinal.csv")
+df2 = pd.read_csv("policeold.csv")
+df['Timestamp'] = df2['Date']
 
 # df = df.drop(['Date'], axis=1)
 # df = df.rename({"SingleDate": "Date"})
 
-df['Month'] = df['Month'].astype(str)
+# df['Month'] = df['Month'].astype(str)
 
 # for index in range(len(df)):
 #     mydate = df.loc[index, 'Date']
