@@ -5,14 +5,14 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+	
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">Here's what we found.</h1>
 	<p class="mb-4">Our engine returned a total of {{ datalength }} results.</p>
-
+	
 	<!-- Content Row -->
 	<div class="row">
-
+		
 		<!-- Donut Chart -->
 		<div class="col-xl-4 col-lg-3">
 			<div class="card shadow mb-4">
@@ -26,412 +26,645 @@
 						<canvas id="crimeClassChart" width="300" height="300"></canvas>
 					</div>
 					<!-- <hr>
-					Division of selected crimes by class of crime. -->
+						Division of selected crimes by class of crime. -->
+					</div>
 				</div>
 			</div>
-		</div>
-
-		<!--bar chart-->
-		<div class="col-xl-5 col-lg-6">
 			
-			<div class="card shadow mb-4">
-				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Division by District</h6>
-				</div>
-				<div class="card-body">
-					<div class="chart-bar">
-						<canvas id="districtChart" width="600" height="400"></canvas>
+			<!--bar chart-->
+			<div class="col-xl-5 col-lg-6">
+				
+				<div class="card shadow mb-4">
+					<div class="card-header py-3">
+						<h6 class="m-0 font-weight-bold text-primary">Division by District</h6>
 					</div>
-					<!-- <hr>
-					Division of selected crimes by district where the crime occured. -->
+					<div class="card-body">
+						<div class="chart-bar">
+							<canvas id="districtChart" width="600" height="400"></canvas>
+						</div>
+						<!-- <hr>
+							Division of selected crimes by district where the crime occured. -->
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-
-		<!-- Earnings (Monthly) Card Example -->
-		<div class="col-xl-3 col-lg-3 mb-4">
-			<div class="row my-2">
-				<div class="col">
-					<div class="card border-left-primary shadow h-100 mb-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-3">
-									<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">class: {{ maxclasslabel}}</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxclasspercentage }}%</div>
+				
+				<!-- Earnings (Monthly) Card Example -->
+				<div class="col-xl-3 col-lg-3 mb-4">
+					<div class="row my-2">
+						<div class="col">
+							<div class="card border-left-primary shadow h-100 mb-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-3">
+											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">class: {{ maxclasslabel}}</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxclasspercentage }}%</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row my-2">
+						<div class="col">
+							<div class="card border-left-success shadow h-100 mb-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-3">
+											<div class="text-xs font-weight-bold text-success text-uppercase mb-1">district: {{ maxdistrictlabel }}</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"> {{ maxdistrictpercentage }}%</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row my-2">
+						<div class="col">
+							<div class="card border-left-warning shadow h-100 mb-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-3">
+											<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">resolution: {{ maxreslabel}}</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxrespercentage }}%</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row my-2">
+						<div class="col">
+							<div class="card border-left-danger shadow h-100 mb-2">
+								<div class="card-body">
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-3">
+											<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">day: {{ maxdaylabel}}</div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxdaypercentage }}%</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+				
 			</div>
-			<div class="row my-2">
-				<div class="col">
-					<div class="card border-left-success shadow h-100 mb-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-3">
-									<div class="text-xs font-weight-bold text-success text-uppercase mb-1">district: {{ maxdistrictlabel }}</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800"> {{ maxdistrictpercentage }}%</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row my-2">
-				<div class="col">
-					<div class="card border-left-warning shadow h-100 mb-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-3">
-									<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">resolution: {{ maxreslabel}}</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxrespercentage }}%</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row my-2">
-				<div class="col">
-					<div class="card border-left-danger shadow h-100 mb-2">
-						<div class="card-body">
-							<div class="row no-gutters align-items-center">
-								<div class="col mr-3">
-									<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">day: {{ maxdaylabel}}</div>
-									<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxdaypercentage }}%</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-
-	<!-- Content Row -->
-	<div class="row">
-
-		<!--bar chart-->
-		<div class="col-xl-8 col-lg-7">
 			
-			<div class="card shadow mb-4">
-				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Division by Resolution</h6>
+			<!-- Content Row -->
+			<div class="row">
+				
+				<!--bar chart-->
+				<div class="col-xl-8 col-lg-7">
+					
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Division by Resolution</h6>
+						</div>
+						<div class="card-body">
+							<div class="chart-bar">
+								<canvas id="resolutionChart"></canvas>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="card-body">
-					<div class="chart-bar">
-						<canvas id="resolutionChart"></canvas>
+				
+				<!-- Donut Chart -->
+				<div class="col-xl-4 col-lg-5">
+					<div class="card shadow mb-4">
+						<!-- Card Header - Dropdown -->
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Division by Day</h6>
+						</div>
+						<!-- Card Body -->
+						<div class="card-body">
+							<div class="chart-pie pt-4">
+								<canvas id="dayChart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row">
+				<!--bar chart-->
+				<div class="col-xl-12 col-lg-12">
+					
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Division by Month</h6>
+						</div>
+						<div class="card-body">
+							<div class="chart-bar">
+								<canvas id="monthChart"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<!--bar chart-->
+				<div class="col-xl-12 col-lg-12">
+					
+					<div class="card shadow mb-4">
+						<div class="card-header py-3">
+							<h6 class="m-0 font-weight-bold text-primary">Division by Day of Month</h6>
+						</div>
+						<div class="card-body">
+							<div class="chart-bar">
+								<canvas id="singledateChart"></canvas>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- Donut Chart -->
-		<div class="col-xl-4 col-lg-5">
-			<div class="card shadow mb-4">
-				<!-- Card Header - Dropdown -->
-				<div class="card-header py-3">
-					<h6 class="m-0 font-weight-bold text-primary">Division by Day</h6>
-				</div>
-				<!-- Card Body -->
-				<div class="card-body">
-					<div class="chart-pie pt-4">
-						<canvas id="dayChart"></canvas>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
-</div>
-
-<!--crimeclass chart-->
-<script>
-	// Set new default font family and font color to mimic Bootstrap's default styling
-	Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-	Chart.defaults.global.defaultFontColor = '#858796';
-	// Pie Chart Example
-	var ctx = document.getElementById("crimeClassChart");
-	var crimeClassChart = new Chart(ctx, {
-		type: 'pie',
-		data: {
-			labels: [
-			{% for item in classlabels %}
-			"{{ item }}",
-			{% endfor %}
-			],
-			datasets: [{
-				data: [
-				{% for item in classvalues %}
-				"{{ item }}",
-				{% endfor %}
-				],
-				backgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c", "#9124A3", "#6610f2"],
-				hoverBackgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c", "#9124A3", "#6610f2"],
-				hoverBorderColor: "rgba(234, 236, 244, 1)",
-			}],
-		},
-		options: {
-			maintainAspectRatio: false,
-			tooltips: {
-				backgroundColor: "rgb(255,255,255)",
-				bodyFontColor: "#858796",
-				borderColor: '#dddfeb',
-				borderWidth: 1,
-				xPadding: 15,
-				yPadding: 15,
-				displayColors: false,
-				caretPadding: 10,
-			},
-			legend: {
-				display: true,
-				position: 'bottom',
-				fullWidth: true,
-				labels: {
-					boxWidth: 10,
+		
+		<!--crimeclass chart-->
+		<script>
+			// Set new default font family and font color to mimic Bootstrap's default styling
+			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+			Chart.defaults.global.defaultFontColor = '#858796';
+			// Pie Chart Example
+			var ctx = document.getElementById("crimeClassChart");
+			var crimeClassChart = new Chart(ctx, {
+				type: 'pie',
+				data: {
+					labels: [
+					{% for item in classlabels %}
+					"{{ item }}",
+					{% endfor %}
+					],
+					datasets: [{
+						data: [
+						{% for item in classvalues %}
+						"{{ item }}",
+						{% endfor %}
+						],
+						backgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c", "#9124A3", "#6610f2"],
+						hoverBackgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c", "#9124A3", "#6610f2"],
+						hoverBorderColor: "rgba(234, 236, 244, 1)",
+					}],
+				},
+				options: {
+					maintainAspectRatio: false,
+					tooltips: {
+						backgroundColor: "rgb(255,255,255)",
+						bodyFontColor: "#858796",
+						borderColor: '#dddfeb',
+						borderWidth: 1,
+						xPadding: 15,
+						yPadding: 15,
+						displayColors: false,
+						caretPadding: 10,
+					},
+					legend: {
+						display: true,
+						position: 'bottom',
+						fullWidth: true,
+						labels: {
+							boxWidth: 10,
+						}
+					},
+					cutoutPercentage: 0,
+				},
+			});
+		</script>
+		
+		<!--district chart-->
+		<script>
+			// Set new default font family and font color to mimic Bootstrap's default styling
+			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+			Chart.defaults.global.defaultFontColor = '#858796';
+			
+			// Bar Chart Example
+			var ctx = document.getElementById("districtChart");
+			var districtChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: [
+					{% for item in districtlabels %}
+					"{{ item }}",
+					{% endfor %}
+					],
+					datasets: [{
+						label: "Crimes",
+						backgroundColor: "#4e73df",
+						hoverBackgroundColor: "#2e59d9",
+						borderColor: "#4e73df",
+						data: [
+						{% for item in districtvalues %}
+						"{{ item }}",
+						{% endfor %}
+						],
+					}],
+				},
+				options: {
+					maintainAspectRatio: false,
+					layout: {
+						padding: {
+							left: 10,
+							right: 25,
+							top: 25,
+							bottom: 0
+						}
+					},
+					scales: {
+						xAxes: [{
+							time: {
+								unit: 'month'
+							},
+							gridLines: {
+								display: false,
+								drawBorder: false
+							},
+							ticks: {
+								maxTicksLimit: 10
+							},
+							maxBarThickness: 25,
+						}],
+						yAxes: [{
+							ticks: {
+								min: 0,
+								max: {{ maxdistrictvalue }},
+								maxTicksLimit: 5,
+								padding: 10,
+								/*// Include a dollar sign in the ticks
+								callback: function(value, index, values) {
+									return '$' + number_format(value);
+								}*/
+							},
+							gridLines: {
+								color: "rgb(234, 236, 244)",
+								zeroLineColor: "rgb(234, 236, 244)",
+								drawBorder: false,
+								borderDash: [2],
+								zeroLineBorderDash: [2]
+							}
+						}],
+					},
+					legend: {
+						display: false
+					},
+					tooltips: {
+						titleMarginBottom: 10,
+						titleFontColor: '#6e707e',
+						titleFontSize: 14,
+						backgroundColor: "rgb(255,255,255)",
+						bodyFontColor: "#858796",
+						borderColor: '#dddfeb',
+						borderWidth: 1,
+						xPadding: 15,
+						yPadding: 15,
+						displayColors: false,
+						caretPadding: 10,
+					},
 				}
-			},
-			cutoutPercentage: 0,
-		},
-	});
-</script>
-
-<!--district chart-->
-<script>
-	// Set new default font family and font color to mimic Bootstrap's default styling
-	Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-	Chart.defaults.global.defaultFontColor = '#858796';
-
-	// Bar Chart Example
-	var ctx = document.getElementById("districtChart");
-	var districtChart = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: [
-			{% for item in districtlabels %}
-			"{{ item }}",
-			{% endfor %}
-			],
-			datasets: [{
-				label: "Crimes",
-				backgroundColor: "#4e73df",
-				hoverBackgroundColor: "#2e59d9",
-				borderColor: "#4e73df",
-				data: [
-				{% for item in districtvalues %}
-				"{{ item }}",
-				{% endfor %}
-				],
-			}],
-		},
-		options: {
-			maintainAspectRatio: false,
-			layout: {
-				padding: {
-					left: 10,
-					right: 25,
-					top: 25,
-					bottom: 0
+			});
+		</script>
+		
+		<!--resolution chart-->
+		<script>
+			// Set new default font family and font color to mimic Bootstrap's default styling
+			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+			Chart.defaults.global.defaultFontColor = '#858796';
+			
+			// Bar Chart Example
+			var ctx = document.getElementById("resolutionChart");
+			var resolutionChart = new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: [
+					{% for item in reslabels %}
+					"{{ item }}",
+					{% endfor %}
+					],
+					datasets: [{
+						label: "Crimes",
+						backgroundColor: "#4e73df",
+						hoverBackgroundColor: "#2e59d9",
+						borderColor: "#4e73df",
+						data: [
+						{% for item in resvalues %}
+						"{{ item }}",
+						{% endfor %}
+						],
+					}],
+				},
+				options: {
+					maintainAspectRatio: false,
+					layout: {
+						padding: {
+							left: 10,
+							right: 25,
+							top: 25,
+							bottom: 0
+						}
+					},
+					scales: {
+						xAxes: [{
+							time: {
+								unit: 'month'
+							},
+							gridLines: {
+								display: false,
+								drawBorder: false
+							},
+							ticks: {
+								maxTicksLimit: 10
+							},
+							maxBarThickness: 25,
+						}],
+						yAxes: [{
+							ticks: {
+								min: 0,
+								max: {{ maxresvalue }},
+								maxTicksLimit: 5,
+								padding: 10,
+								/*// Include a dollar sign in the ticks
+								callback: function(value, index, values) {
+									return '$' + number_format(value);
+								}*/
+							},
+							gridLines: {
+								color: "rgb(234, 236, 244)",
+								zeroLineColor: "rgb(234, 236, 244)",
+								drawBorder: false,
+								borderDash: [2],
+								zeroLineBorderDash: [2]
+							}
+						}],
+					},
+					legend: {
+						display: false
+					},
+					tooltips: {
+						titleMarginBottom: 10,
+						titleFontColor: '#6e707e',
+						titleFontSize: 14,
+						backgroundColor: "rgb(255,255,255)",
+						bodyFontColor: "#858796",
+						borderColor: '#dddfeb',
+						borderWidth: 1,
+						xPadding: 15,
+						yPadding: 15,
+						displayColors: false,
+						caretPadding: 10,
+					},
 				}
-			},
-			scales: {
-				xAxes: [{
-					time: {
-						unit: 'month'
+			});
+		</script>
+		
+		<!--day chart-->
+		<script>
+			// Set new default font family and font color to mimic Bootstrap's default styling
+			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+			Chart.defaults.global.defaultFontColor = '#858796';
+			// Pie Chart Example
+			var ctx = document.getElementById("dayChart");
+			var dayChart = new Chart(ctx, {
+				type: 'doughnut',
+				data: {
+					labels: [
+					{% for item in daylabels %}
+					"{{ item }}",
+					{% endfor %}
+					],
+					datasets: [{
+						data: [
+						{% for item in dayvalues %}
+						"{{ item }}",
+						{% endfor %}
+						],
+						backgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c"],
+						hoverBackgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c"],
+						hoverBorderColor: "rgba(234, 236, 244, 1)",
+					}],
+				},
+				options: {
+					maintainAspectRatio: false,
+					tooltips: {
+						backgroundColor: "rgb(255,255,255)",
+						bodyFontColor: "#858796",
+						borderColor: '#dddfeb',
+						borderWidth: 1,
+						xPadding: 15,
+						yPadding: 15,
+						displayColors: false,
+						caretPadding: 10,
 					},
-					gridLines: {
-						display: false,
-						drawBorder: false
+					legend: {
+						display: true,
+						position: 'bottom',
+						fullWidth: true,
+						labels: {
+							boxWidth: 10,
+						}
 					},
-					ticks: {
-						maxTicksLimit: 10
+					cutoutPercentage: 0,
+				},
+			});
+		</script>
+		
+		<!--month chart-->
+		<script>
+			// Set new default font family and font color to mimic Bootstrap's default styling
+			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+			Chart.defaults.global.defaultFontColor = '#858796';
+			
+			// Bar Chart Example
+			var ctx = document.getElementById("monthChart");
+			var monthChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: [
+					{% for item in monthlabels %}
+					"{{ item }}",
+					{% endfor %}
+					],
+					datasets: [{
+						label: "Crimes",
+						lineTension: 0.3,
+						backgroundColor: "rgba(78, 115, 223, 0.05)",
+						borderColor: "rgba(78, 115, 223, 1)",
+						pointRadius: 3,
+						pointBackgroundColor: "rgba(78, 115, 223, 1)",
+						pointBorderColor: "rgba(78, 115, 223, 1)",
+						pointHoverRadius: 3,
+						pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+						pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+						pointHitRadius: 10,
+						pointBorderWidth: 2,
+						data: [
+						{% for item in monthvalues %}
+						"{{ item }}",
+						{% endfor %}
+						],
+					}],
+				},
+				options: {
+					maintainAspectRatio: false,
+					layout: {
+						padding: {
+							left: 10,
+							right: 25,
+							top: 25,
+							bottom: 0
+						}
 					},
-					maxBarThickness: 25,
-				}],
-				yAxes: [{
-					ticks: {
-						min: 0,
-						max: {{ maxdistrictvalue }},
-						maxTicksLimit: 5,
-						padding: 10,
-						/*// Include a dollar sign in the ticks
-						callback: function(value, index, values) {
-							return '$' + number_format(value);
-						}*/
+					scales: {
+						xAxes: [{
+							time: {
+								unit: 'month'
+							},
+							gridLines: {
+								display: false,
+								drawBorder: false
+							},
+							ticks: {
+								maxTicksLimit: 12
+							},
+							maxBarThickness: 25,
+						}],
+						yAxes: [{
+							ticks: {
+								min: 0,
+								max: {{ maxmonthvalue }},
+								maxTicksLimit: 5,
+								padding: 10,
+								/*// Include a dollar sign in the ticks
+								callback: function(value, index, values) {
+									return '$' + number_format(value);
+								}*/
+							},
+							gridLines: {
+								color: "rgb(234, 236, 244)",
+								zeroLineColor: "rgb(234, 236, 244)",
+								drawBorder: false,
+								borderDash: [2],
+								zeroLineBorderDash: [2]
+							}
+						}],
 					},
-					gridLines: {
-						color: "rgb(234, 236, 244)",
-						zeroLineColor: "rgb(234, 236, 244)",
-						drawBorder: false,
-						borderDash: [2],
-						zeroLineBorderDash: [2]
-					}
-				}],
-			},
-			legend: {
-				display: false
-			},
-			tooltips: {
-				titleMarginBottom: 10,
-				titleFontColor: '#6e707e',
-				titleFontSize: 14,
-				backgroundColor: "rgb(255,255,255)",
-				bodyFontColor: "#858796",
-				borderColor: '#dddfeb',
-				borderWidth: 1,
-				xPadding: 15,
-				yPadding: 15,
-				displayColors: false,
-				caretPadding: 10,
-			},
-		}
-	});
-</script>
-
-<!--resolution chart-->
-<script>
-	// Set new default font family and font color to mimic Bootstrap's default styling
-	Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-	Chart.defaults.global.defaultFontColor = '#858796';
-
-	// Bar Chart Example
-	var ctx = document.getElementById("resolutionChart");
-	var resolutionChart = new Chart(ctx, {
-		type: 'bar',
-		data: {
-			labels: [
-			{% for item in reslabels %}
-			"{{ item }}",
-			{% endfor %}
-			],
-			datasets: [{
-				label: "Crimes",
-				backgroundColor: "#4e73df",
-				hoverBackgroundColor: "#2e59d9",
-				borderColor: "#4e73df",
-				data: [
-				{% for item in resvalues %}
-				"{{ item }}",
-				{% endfor %}
-				],
-			}],
-		},
-		options: {
-			maintainAspectRatio: false,
-			layout: {
-				padding: {
-					left: 10,
-					right: 25,
-					top: 25,
-					bottom: 0
+					legend: {
+						display: false
+					},
+					tooltips: {
+						titleMarginBottom: 10,
+						titleFontColor: '#6e707e',
+						titleFontSize: 14,
+						backgroundColor: "rgb(255,255,255)",
+						bodyFontColor: "#858796",
+						borderColor: '#dddfeb',
+						borderWidth: 1,
+						xPadding: 15,
+						yPadding: 15,
+						displayColors: false,
+						caretPadding: 10,
+					},
 				}
-			},
-			scales: {
-				xAxes: [{
-					time: {
-						unit: 'month'
-					},
-					gridLines: {
-						display: false,
-						drawBorder: false
-					},
-					ticks: {
-						maxTicksLimit: 10
-					},
-					maxBarThickness: 25,
-				}],
-				yAxes: [{
-					ticks: {
-						min: 0,
-						max: {{ maxresvalue }},
-						maxTicksLimit: 5,
-						padding: 10,
-						/*// Include a dollar sign in the ticks
-						callback: function(value, index, values) {
-							return '$' + number_format(value);
-						}*/
-					},
-					gridLines: {
-						color: "rgb(234, 236, 244)",
-						zeroLineColor: "rgb(234, 236, 244)",
-						drawBorder: false,
-						borderDash: [2],
-						zeroLineBorderDash: [2]
-					}
-				}],
-			},
-			legend: {
-				display: false
-			},
-			tooltips: {
-				titleMarginBottom: 10,
-				titleFontColor: '#6e707e',
-				titleFontSize: 14,
-				backgroundColor: "rgb(255,255,255)",
-				bodyFontColor: "#858796",
-				borderColor: '#dddfeb',
-				borderWidth: 1,
-				xPadding: 15,
-				yPadding: 15,
-				displayColors: false,
-				caretPadding: 10,
-			},
-		}
-	});
-</script>
+			});
+		</script>
 
-<!--day chart-->
-<script>
-	// Set new default font family and font color to mimic Bootstrap's default styling
-	Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-	Chart.defaults.global.defaultFontColor = '#858796';
-	// Pie Chart Example
-	var ctx = document.getElementById("dayChart");
-	var dayChart = new Chart(ctx, {
-		type: 'doughnut',
-		data: {
-			labels: [
-			{% for item in daylabels %}
-			"{{ item }}",
-			{% endfor %}
-			],
-			datasets: [{
-				data: [
-				{% for item in dayvalues %}
-				"{{ item }}",
-				{% endfor %}
-				],
-				backgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c"],
-				hoverBackgroundColor: ["#4e73df", "#36b9cc", "#1cc88a", "#ffc107", "#fd7e14", "#dc3545", "#e83e8c"],
-				hoverBorderColor: "rgba(234, 236, 244, 1)",
-			}],
-		},
-		options: {
-			maintainAspectRatio: false,
-			tooltips: {
-				backgroundColor: "rgb(255,255,255)",
-				bodyFontColor: "#858796",
-				borderColor: '#dddfeb',
-				borderWidth: 1,
-				xPadding: 15,
-				yPadding: 15,
-				displayColors: false,
-				caretPadding: 10,
-			},
-			legend: {
-				display: true,
-				position: 'bottom',
-				fullWidth: true,
-				labels: {
-					boxWidth: 10,
+		<!--singledate chart-->
+		<script>
+			// Set new default font family and font color to mimic Bootstrap's default styling
+			Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+			Chart.defaults.global.defaultFontColor = '#858796';
+			
+			// Bar Chart Example
+			var ctx = document.getElementById("singledateChart");
+			var singledateChart = new Chart(ctx, {
+				type: 'line',
+				data: {
+					labels: [
+					{% for item in singledatelabels %}
+					"{{ item }}",
+					{% endfor %}
+					],
+					datasets: [{
+						label: "Crimes",
+						lineTension: 0.3,
+						backgroundColor: "rgba(78, 115, 223, 0.05)",
+						borderColor: "rgba(78, 115, 223, 1)",
+						pointRadius: 3,
+						pointBackgroundColor: "rgba(78, 115, 223, 1)",
+						pointBorderColor: "rgba(78, 115, 223, 1)",
+						pointHoverRadius: 3,
+						pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+						pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+						pointHitRadius: 10,
+						pointBorderWidth: 2,
+						data: [
+						{% for item in singledatevalues %}
+						"{{ item }}",
+						{% endfor %}
+						],
+					}],
+				},
+				options: {
+					maintainAspectRatio: false,
+					layout: {
+						padding: {
+							left: 10,
+							right: 25,
+							top: 25,
+							bottom: 0
+						}
+					},
+					scales: {
+						xAxes: [{
+							time: {
+								unit: 'month'
+							},
+							gridLines: {
+								display: false,
+								drawBorder: false
+							},
+							ticks: {
+								maxTicksLimit: 32
+							},
+							maxBarThickness: 25,
+						}],
+						yAxes: [{
+							ticks: {
+								min: 0,
+								max: {{ maxsingledatevalue }},
+								maxTicksLimit: 5,
+								padding: 10,
+								/*// Include a dollar sign in the ticks
+								callback: function(value, index, values) {
+									return '$' + number_format(value);
+								}*/
+							},
+							gridLines: {
+								color: "rgb(234, 236, 244)",
+								zeroLineColor: "rgb(234, 236, 244)",
+								drawBorder: false,
+								borderDash: [2],
+								zeroLineBorderDash: [2]
+							}
+						}],
+					},
+					legend: {
+						display: false
+					},
+					tooltips: {
+						titleMarginBottom: 10,
+						titleFontColor: '#6e707e',
+						titleFontSize: 14,
+						backgroundColor: "rgb(255,255,255)",
+						bodyFontColor: "#858796",
+						borderColor: '#dddfeb',
+						borderWidth: 1,
+						xPadding: 15,
+						yPadding: 15,
+						displayColors: false,
+						caretPadding: 10,
+					},
 				}
-			},
-			cutoutPercentage: 0,
-		},
-	});
-</script>
-
-
-{% endblock %}
+			});
+		</script>
+		
+		
+		{% endblock %}

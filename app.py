@@ -12,7 +12,7 @@ def home():
 
 @app.route('/query')
 def query():
-	return render_template("query.html", crimeclasslen = len(df['CrimeClass'].unique()), uniquecrimeclass = df['CrimeClass'].unique(), districtlen = len(df['PdDistrict'].unique()), uniquedistrict = df['PdDistrict'].unique(), reslen = len(df['Resolution'].unique()), uniqueres = df['Resolution'].unique(), daylen = len(df['DayOfWeek'].unique()), uniquedays = df['DayOfWeek'].unique())
+	return render_template("index.html", target="/query", crimeclasslen = len(df['CrimeClass'].unique()), uniquecrimeclass = df['CrimeClass'].unique(), districtlen = len(df['PdDistrict'].unique()), uniquedistrict = df['PdDistrict'].unique(), reslen = len(df['Resolution'].unique()), uniqueres = df['Resolution'].unique(), daylen = len(df['DayOfWeek'].unique()), uniquedays = df['DayOfWeek'].unique())
 
 @app.route('/query', methods =['POST'])
 def queryresult():
@@ -59,7 +59,7 @@ def queryresult():
 
 @app.route('/visualise')
 def visualise():
-	return render_template("visualise.html", crimeclasslen = len(df['CrimeClass'].unique()), uniquecrimeclass = df['CrimeClass'].unique(), districtlen = len(df['PdDistrict'].unique()), uniquedistrict = df['PdDistrict'].unique(), reslen = len(df['Resolution'].unique()), uniqueres = df['Resolution'].unique(), daylen = len(df['DayOfWeek'].unique()), uniquedays = df['DayOfWeek'].unique())
+	return render_template("index.html", target="/visualise", crimeclasslen = len(df['CrimeClass'].unique()), uniquecrimeclass = df['CrimeClass'].unique(), districtlen = len(df['PdDistrict'].unique()), uniquedistrict = df['PdDistrict'].unique(), reslen = len(df['Resolution'].unique()), uniqueres = df['Resolution'].unique(), daylen = len(df['DayOfWeek'].unique()), uniquedays = df['DayOfWeek'].unique())
 
 @app.route('/visualise', methods =['POST'])
 def visualiseresult():
@@ -125,7 +125,21 @@ def visualiseresult():
 		maxdayvalue = max(dayvalues)
 		maxdaylabel = daylabels[dayvalues.index(maxdayvalue)]
 		maxdaypercentage = int(maxdayvalue * 100 / sum(dayvalues))
-	return render_template(template, datalength=datalength, classlabels=classlabels, classvalues=classvalues, maxclasslabel=maxclasslabel, maxclasspercentage=maxclasspercentage, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, maxdistrictlabel=maxdistrictlabel, maxdistrictpercentage=maxdistrictpercentage, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, maxreslabel=maxreslabel, maxrespercentage=maxrespercentage, daylabels=daylabels, dayvalues=dayvalues, maxdaylabel=maxdaylabel, maxdaypercentage=maxdaypercentage)
+		d = dict(data['Month'].value_counts())
+		monthvalues = []
+		for x in range(1,13):
+			monthvalues.append(d.get(x, 0))
+		monthlabels = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
+		maxmonthvalue = max(monthvalues)
+		maxmonthlabel = monthlabels[monthvalues.index(maxmonthvalue)]
+		d = dict(data['SingleDate'].value_counts())
+		singledatevalues = []
+		for x in range(1,32):
+			singledatevalues.append(d.get(x, 0))
+		singledatelabels = list(range(1, 32))
+		maxsingledatevalue = max(singledatevalues)
+		maxsingledatelabel = singledatelabels[singledatevalues.index(maxsingledatevalue)]
+	return render_template(template, datalength=datalength, classlabels=classlabels, classvalues=classvalues, maxclasslabel=maxclasslabel, maxclasspercentage=maxclasspercentage, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, maxdistrictlabel=maxdistrictlabel, maxdistrictpercentage=maxdistrictpercentage, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, maxreslabel=maxreslabel, maxrespercentage=maxrespercentage, daylabels=daylabels, dayvalues=dayvalues, maxdaylabel=maxdaylabel, maxdaypercentage=maxdaypercentage, monthlabels=monthlabels, monthvalues=monthvalues, maxmonthvalue=maxmonthvalue, maxmonthlabel=maxmonthlabel, singledatelabels=singledatelabels, singledatevalues=singledatevalues, maxsingledatevalue=maxsingledatevalue, maxsingledatelabel=maxsingledatelabel)
 
 @app.errorhandler(404)
 def error(e):
