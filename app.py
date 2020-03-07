@@ -20,6 +20,9 @@ def basic():
 	incident = request.form['userincident']
 	date = request.form['userdate']
 	month = request.form['usermonth']
+	time = request.form['usertime']
+	print(time)
+	print(type(time))
 	data = df.copy(deep = True)
 	if crimeclass != '0':
 		data = data[data['CrimeClass'] == crimeclass]
