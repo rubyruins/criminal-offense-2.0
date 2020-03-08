@@ -9,12 +9,69 @@
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">Here's what we found.</h1>
 	<p class="mb-4">Our engine returned a total of {{ datalength }} results.</p>
-	
+
+
+	<!-- card row-->
+	<div class="row">
+
+		<div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+			<div class="card border-left-primary shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-3">
+							<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">class: {{ maxclasslabel}}</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxclasspercentage }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+			<div class="card border-left-success shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-3">
+							<div class="text-xs font-weight-bold text-success text-uppercase mb-1">district: {{ maxdistrictlabel }}</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"> {{ maxdistrictpercentage }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+			<div class="card border-left-warning shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-3">
+							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">resolution: {{ maxreslabel}}</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxrespercentage }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-3 col-lg-3 col-md-6 mb-4">
+			<div class="card border-left-danger shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-3">
+							<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">day: {{ maxdaylabel}}</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxdaypercentage }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Content Row -->
 	<div class="row">
 		
-		<!-- Donut Chart -->
-		<div class="col-xl-4 col-lg-3">
+		<!-- crime class Chart -->
+		<div class="col-xl-4 col-lg-4">
 			<div class="card shadow mb-4">
 				<!-- Card Header - Dropdown -->
 				<div class="card-header py-3">
@@ -27,176 +84,151 @@
 					</div>
 					<!-- <hr>
 						Division of selected crimes by class of crime. -->
-					</div>
 				</div>
 			</div>
-			
-			<!--bar chart-->
-			<div class="col-xl-5 col-lg-6">
-				
-				<div class="card shadow mb-4">
-					<div class="card-header py-3">
-						<h6 class="m-0 font-weight-bold text-primary">Division by District</h6>
-					</div>
-					<div class="card-body">
-						<div class="chart-bar">
-							<canvas id="districtChart" width="600" height="400"></canvas>
-						</div>
-						<!-- <hr>
-							Division of selected crimes by district where the crime occured. -->
-						</div>
-					</div>
-				</div>
-				
-				<!-- Earnings (Monthly) Card Example -->
-				<div class="col-xl-3 col-lg-3 mb-4">
-					<div class="row my-2">
-						<div class="col">
-							<div class="card border-left-primary shadow h-100 mb-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-3">
-											<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">class: {{ maxclasslabel}}</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxclasspercentage }}%</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row my-2">
-						<div class="col">
-							<div class="card border-left-success shadow h-100 mb-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-3">
-											<div class="text-xs font-weight-bold text-success text-uppercase mb-1">district: {{ maxdistrictlabel }}</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"> {{ maxdistrictpercentage }}%</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row my-2">
-						<div class="col">
-							<div class="card border-left-warning shadow h-100 mb-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-3">
-											<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">resolution: {{ maxreslabel}}</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxrespercentage }}%</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row my-2">
-						<div class="col">
-							<div class="card border-left-danger shadow h-100 mb-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-3">
-											<div class="text-xs font-weight-bold text-danger text-uppercase mb-1">day: {{ maxdaylabel}}</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxdaypercentage }}%</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-			</div>
-			
-			<!-- Content Row -->
-			<div class="row">
-				
-				<!--bar chart-->
-				<div class="col-xl-8 col-lg-7">
-					
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Division by Resolution</h6>
-						</div>
-						<div class="card-body">
-							<div class="chart-bar">
-								<canvas id="resolutionChart"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<!-- Donut Chart -->
-				<div class="col-xl-4 col-lg-5">
-					<div class="card shadow mb-4">
-						<!-- Card Header - Dropdown -->
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Division by Day</h6>
-						</div>
-						<!-- Card Body -->
-						<div class="card-body">
-							<div class="chart-pie pt-4">
-								<canvas id="dayChart"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<!--bar chart-->
-				<div class="col-xl-12 col-lg-12">
-					
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Division by Month</h6>
-						</div>
-						<div class="card-body">
-							<div class="chart-bar">
-								<canvas id="monthChart"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="row">
-				<!--bar chart-->
-				<div class="col-xl-12 col-lg-12">
-					
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Division by Day of Month</h6>
-						</div>
-						<div class="card-body">
-							<div class="chart-bar">
-								<canvas id="singledateChart"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<!--bar chart-->
-				<div class="col-xl-12 col-lg-12">
-					
-					<div class="card shadow mb-4">
-						<div class="card-header py-3">
-							<h6 class="m-0 font-weight-bold text-primary">Division by Time of Day</h6>
-						</div>
-						<div class="card-body">
-							<div class="chart-bar">
-								<canvas id="timeChart"></canvas>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
 		</div>
+			
+		<!--district chart-->
+		<div class="col-xl-8 col-lg-8">		
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Division by District</h6>
+				</div>					
+				<div class="card-body">
+					<div class="chart-bar">
+						<canvas id="districtChart" width="600" height="400"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+			
+	<!-- Content Row -->
+	<div class="row">			
+		<!--resolution chart-->
+		<div class="col-xl-8 col-lg-7">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Division by Resolution</h6>
+				</div>
+				<div class="card-body">
+					<div class="chart-bar">
+						<canvas id="resolutionChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+				
+		<!-- day Chart -->
+		<div class="col-xl-4 col-lg-5">
+			<div class="card shadow mb-4">
+				<!-- Card Header - Dropdown -->
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Division by Day</h6>
+				</div>
+				<!-- Card Body -->
+				<div class="card-body">
+					<div class="chart-pie pt-4">
+						<canvas id="dayChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- card row-->
+	<div class="row">
+
+		<div class="col-xl-4 col-lg-4 mb-4">
+			<div class="card border-left-primary shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-3">
+							<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">date of month: {{ maxsingledatelabel}}</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxsingledatepercentage }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-4 col-lg-4 mb-4">
+			<div class="card border-left-success shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-3">
+							<div class="text-xs font-weight-bold text-success text-uppercase mb-1">month of year: {{ maxmonthlabel }}</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800"> {{ maxmonthpercentage }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xl-4 col-lg-4 mb-4">
+			<div class="card border-left-warning shadow h-100 py-2">
+				<div class="card-body">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-3">
+							<div class="text-xs font-weight-bold text-warning text-uppercase mb-1">time of day: {{ maxtimelabel}}</div>
+							<div class="h5 mb-0 font-weight-bold text-gray-800">{{ maxtimepercentage }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+	<div class="row">
+		<!--month chart-->
+		<div class="col-xl-12 col-lg-12">			
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Division by Month</h6>
+				</div>
+				<div class="card-body">
+					<div class="chart-bar">
+						<canvas id="monthChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			
+	<div class="row">
+		<!--day of month chart-->
+		<div class="col-xl-12 col-lg-12">
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Division by Day of Month</h6>
+				</div>
+				<div class="card-body">
+					<div class="chart-bar">
+						<canvas id="singledateChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<!--time chart-->
+		<div class="col-xl-12 col-lg-12">			
+			<div class="card shadow mb-4">
+				<div class="card-header py-3">
+					<h6 class="m-0 font-weight-bold text-primary">Division by Time of Day</h6>
+				</div>
+				<div class="card-body">
+					<div class="chart-bar">
+						<canvas id="timeChart"></canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
 		
 		<!--crimeclass chart-->
 		<script>

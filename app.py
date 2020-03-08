@@ -48,8 +48,6 @@ def queryresult():
 		data = data[data['Month'] == int(month)]
 	if time:
 		data = data[data['Time'] == str(time)]
-	print(crimeclass, district, resolution, department, incident)
-	print(data)
 	data.reset_index(drop=True, inplace=True)
 	datalength = len(data)
 	if datalength == 0:
@@ -111,7 +109,7 @@ def visualiseresult():
 		maxclassvalue = max(classvalues)
 		maxclasslabel = classlabels[classvalues.index(maxclassvalue)]
 		maxclasspercentage = int(maxclassvalue * 100 / sum(classvalues))
-		
+
 		d = dict(data['PdDistrict'].value_counts())
 		districtlabels = list(d.keys())
 		districtvalues = list(d.values())
@@ -140,6 +138,7 @@ def visualiseresult():
 		monthlabels = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER']
 		maxmonthvalue = max(monthvalues)
 		maxmonthlabel = monthlabels[monthvalues.index(maxmonthvalue)]
+		maxmonthpercentage = int(maxmonthvalue * 100 / sum(monthvalues))
 
 		d = dict(data['SingleDate'].value_counts())
 		singledatelabels = []
@@ -149,8 +148,9 @@ def visualiseresult():
 			singledatevalues.append(d[i])
 		maxsingledatevalue = max(singledatevalues)
 		maxsingledatelabel = singledatelabels[singledatevalues.index(maxsingledatevalue)]
-		d = dict(data['Time'].value_counts())
+		maxsingledatepercentage = int(maxsingledatevalue * 100 / sum(singledatevalues))
 
+		d = dict(data['Time'].value_counts())
 		timelabels = []
 		timevalues = []
 		for i in sorted(d):
@@ -158,8 +158,9 @@ def visualiseresult():
 			timevalues.append(d[i])
 		maxtimevalue = max(timevalues)
 		maxtimelabel = timelabels[timevalues.index(maxtimevalue)]
+		maxtimepercentage = int(maxtimevalue * 100 / sum(timevalues))
 
-	return render_template(template, datalength=datalength, classlabels=classlabels, classvalues=classvalues, maxclasslabel=maxclasslabel, maxclasspercentage=maxclasspercentage, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, maxdistrictlabel=maxdistrictlabel, maxdistrictpercentage=maxdistrictpercentage, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, maxreslabel=maxreslabel, maxrespercentage=maxrespercentage, daylabels=daylabels, dayvalues=dayvalues, maxdaylabel=maxdaylabel, maxdaypercentage=maxdaypercentage, monthlabels=monthlabels, monthvalues=monthvalues, maxmonthvalue=maxmonthvalue, maxmonthlabel=maxmonthlabel, singledatelabels=singledatelabels, singledatevalues=singledatevalues, maxsingledatevalue=maxsingledatevalue, maxsingledatelabel=maxsingledatelabel, timelabels=timelabels, timevalues=timevalues, maxtimevalue=maxtimevalue, maxtimelabel=maxtimelabel)
+	return render_template(template, datalength=datalength, classlabels=classlabels, classvalues=classvalues, maxclasslabel=maxclasslabel, maxclasspercentage=maxclasspercentage, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, maxdistrictlabel=maxdistrictlabel, maxdistrictpercentage=maxdistrictpercentage, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, maxreslabel=maxreslabel, maxrespercentage=maxrespercentage, daylabels=daylabels, dayvalues=dayvalues, maxdaylabel=maxdaylabel, maxdaypercentage=maxdaypercentage, monthlabels=monthlabels, monthvalues=monthvalues, maxmonthvalue=maxmonthvalue, maxmonthlabel=maxmonthlabel, maxmonthpercentage=maxmonthpercentage, singledatelabels=singledatelabels, singledatevalues=singledatevalues, maxsingledatevalue=maxsingledatevalue, maxsingledatelabel=maxsingledatelabel, maxsingledatepercentage=maxsingledatepercentage, timelabels=timelabels, timevalues=timevalues, maxtimevalue=maxtimevalue, maxtimelabel=maxtimelabel, maxtimepercentage=maxtimepercentage)
 
 @app.errorhandler(404)
 def error(e):
