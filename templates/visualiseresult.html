@@ -696,7 +696,7 @@
 				type: 'line',
 				data: {
 					labels: [
-					{% for item in monthlabels %}
+					{% for item in timelabels %}
 					"{{ item }}",
 					{% endfor %}
 					],
@@ -714,7 +714,7 @@
 						pointHitRadius: 10,
 						pointBorderWidth: 2,
 						data: [
-						{% for item in monthvalues %}
+						{% for item in timevalues %}
 						"{{ item }}",
 						{% endfor %}
 						],
@@ -740,14 +740,14 @@
 								drawBorder: false
 							},
 							ticks: {
-								maxTicksLimit: 12
+								maxTicksLimit: 50
 							},
 							maxBarThickness: 25,
 						}],
 						yAxes: [{
 							ticks: {
 								min: 0,
-								max: {{ maxmonthvalue }},
+								max: {{ maxtimevalue }},
 								maxTicksLimit: 5,
 								padding: 10,
 								/*// Include a dollar sign in the ticks
