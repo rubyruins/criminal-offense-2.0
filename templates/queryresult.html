@@ -8,7 +8,7 @@
 
 	<!-- Page Heading -->
 	<h1 class="h3 mb-2 text-gray-800">Here's what we found.</h1>
-	<p class="mb-4">Our engine returned a total of {{ datalength }} results.</p>
+	<p>Our engine returned a total of {{ datalength }} results. <b>Click on the serial number to view more details about the case.</b></p>
 	
 	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
@@ -17,6 +17,7 @@
 				<table class="table table-bordered table-xs" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
+							<th>Sr. No.</th>
 							<th>IncidntNum</th>
 							<th>CrimeClass</th>
 							<th>PdDistrict</th>
@@ -28,6 +29,7 @@
 					</thead>
 					<tfoot>
 						<tr>
+							<th>Sr. No.</th>
 							<th>IncidntNum</th>
 							<th>CrimeClass</th>
 							<th>PdDistrict</th>
@@ -38,9 +40,9 @@
 						</tr>
 					</tfoot>
 					<tbody>
-						<form>
 							{%for i in range(0, datalength)%}
 							<tr>
+								<form action="\detail" method='POST'><td><input name="usersr" type="submit" value="{{ data.loc[i, 'SrNo'] }}" style="background: none; color: inherit; border: none; padding: 0; font: inherit; cursor: pointer; outline: inherit;"></td></form>
 								<td>{{ data.loc[i, 'IncidntNum'] }}</td>
 								<td>{{ data.loc[i, 'CrimeClass'] }}</td>
 								<td>{{ data.loc[i, 'PdDistrict'] }}</td>
@@ -50,7 +52,6 @@
 								<td>{{ data.loc[i, 'Resolution'] }}</td>
 							</tr>
 							{%endfor%}
-						</form>
 					</tbody>
 				</table>
 			</div>

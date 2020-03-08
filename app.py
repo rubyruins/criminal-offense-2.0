@@ -162,6 +162,13 @@ def visualiseresult():
 
 	return render_template(template, datalength=datalength, classlabels=classlabels, classvalues=classvalues, maxclasslabel=maxclasslabel, maxclasspercentage=maxclasspercentage, districtlabels=districtlabels, districtvalues=districtvalues, maxdistrictvalue=maxdistrictvalue, maxdistrictlabel=maxdistrictlabel, maxdistrictpercentage=maxdistrictpercentage, reslabels=reslabels, resvalues=resvalues, maxresvalue=maxresvalue, maxreslabel=maxreslabel, maxrespercentage=maxrespercentage, daylabels=daylabels, dayvalues=dayvalues, maxdaylabel=maxdaylabel, maxdaypercentage=maxdaypercentage, monthlabels=monthlabels, monthvalues=monthvalues, maxmonthvalue=maxmonthvalue, maxmonthlabel=maxmonthlabel, maxmonthpercentage=maxmonthpercentage, singledatelabels=singledatelabels, singledatevalues=singledatevalues, maxsingledatevalue=maxsingledatevalue, maxsingledatelabel=maxsingledatelabel, maxsingledatepercentage=maxsingledatepercentage, timelabels=timelabels, timevalues=timevalues, maxtimevalue=maxtimevalue, maxtimelabel=maxtimelabel, maxtimepercentage=maxtimepercentage)
 
+
+@app.route('/detail', methods=['POST'])
+def detail():
+	usersr = request.form['usersr']
+	print(usersr)
+	return render_template("detail.html", num=usersr)
+
 @app.errorhandler(404)
 def error(e):
     return render_template("404.html")
