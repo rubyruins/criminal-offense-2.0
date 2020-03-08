@@ -46,6 +46,8 @@ def queryresult():
 		data = data[data['Date'] == str(date)]
 	if month != '0':
 		data = data[data['Month'] == int(month)]
+	if time:
+		data = data[data['Time'] == str(time)]
 	print(crimeclass, district, resolution, department, incident)
 	print(data)
 	data.reset_index(drop=True, inplace=True)
@@ -93,6 +95,8 @@ def visualiseresult():
 		data = data[data['Date'] == str(date)]
 	if month != '0':
 		data = data[data['Month'] == int(month)]
+	if time:
+		data = data[data['Time'] == str(time)]
 	print(crimeclass, district, resolution, department, incident)
 	print(data)
 	data.reset_index(drop=True, inplace=True)
