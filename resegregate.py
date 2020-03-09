@@ -1,8 +1,10 @@
 import pandas as pd
 
 df = pd.read_csv("policefinal.csv")
-df2 = pd.read_csv("policeold.csv")
-df['Timestamp'] = df2['Date']
+
+for index in range(len(df)):
+    if df.loc[index, 'Category'] in ['DRUG/NARCOTIC']:
+            df.loc[index, 'CrimeClass'] = 'OTHER CRIMES'
 
 # df = df.drop(['Date'], axis=1)
 # df = df.rename({"SingleDate": "Date"})

@@ -166,8 +166,21 @@ def visualiseresult():
 @app.route('/detail', methods=['POST'])
 def detail():
 	usersr = request.form['usersr']
-	print(usersr)
-	return render_template("detail.html", num=usersr)
+	selected = df[df['SrNo'] == int(usersr)]
+	incidntnum = int(selected['IncidntNum'])
+	category = str(selected['Category'].item())
+	descript = str(selected['Descript'].item())
+	day = str(selected['DayOfWeek'].item())
+	date = str(selected['Date'].item())
+	district = str(selected['PdDistrict'].item())
+	res = str(selected['Resolution'].item())
+	add = str(selected['Address'].item())
+	x = float(selected['X'])
+	y = float(selected['Y'])
+	pdid = int(selected['PdId'])
+	crimeclass = str(selected['CrimeClass'].item())
+	time = str(selected['Time'].item())
+	return render_template("detail.html", usersr=usersr, incidntnum=incidntnum, category=category, descript=descript, day=day, date=date, district=district, res=res, add=add, x=x, y=y, pdid=pdid, crimeclass=crimeclass, time=time)
 
 @app.errorhandler(404)
 def error(e):

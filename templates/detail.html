@@ -5,11 +5,126 @@
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Results!</h1>
+        </div>
+        
+        <div class="row">
+            
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-4 col-md-4 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Serial Number</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ usersr }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-list-ol fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-4 col-md-4 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Incident Number</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ incidntnum }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-landmark fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Earnings (Monthly) Card Example -->
+            <div class="col-xl-4 col-md-4 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Department ID</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ pdid }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
 
-	<!-- Page Heading -->
-	<div class="d-sm-flex align-items-center justify-content-between mb-4">
-		<h1 class="h3 mb-0 text-gray-800">{{ num }}</h1>
-	</div>
+            <div class="col-lg-4">
+                
+                <!-- Basic Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Nature of Crime</h6>
+                    </div>
+                    <div class="card-body">
+                        <p><b>Description:</b> {{ descript }}</p>
+                        <p><b>Category:</b> {{ category }}</p>
+                        <p><b>Class:</b> {{ crimeclass }}</p>
+                        <p><b>Resolution:</b> {{ res }}</p>
+                    </div>
+                </div>
+                
+            </div>
 
+            <div class="col-lg-4">
+                
+                <!-- Basic Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Location of Crime</h6>
+                    </div>
+                    <div class="card-body">
+                        <p><b>Address:</b> {{ add }}</p>
+                        <p><b>District:</b> {{ district }}</p>
+                        <p><b>X:</b> {{ x }}</p>
+                        <p><b>Y:</b> {{ y }}</p>
+                    </div>
+                </div>
+                
+            </div>
 
-{% endblock %}
+            <div class="col-lg-4">
+                
+                <!-- Basic Card Example -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Time of Crime</h6>
+                    </div>
+                    <div class="card-body">
+                        <p><b>Time:</b> {{ time }}</p>
+                        <p><b>Date:</b> {{ date }}</p>
+                        <p><b>Day:</b> {{ day }}</p>
+                    </div>
+                </div>
+            </div>            
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+    
+    
+    {% endblock %}
