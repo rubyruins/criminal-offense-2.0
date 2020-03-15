@@ -2,7 +2,16 @@
 
 import pandas as pd
 
-df = pd.read_csv("policenew.csv")
+df = pd.read_csv("policefinal.csv")
+
+for i in range(len(df)):
+    df.loc[i, 'IncidntNum'] = str(df.loc[i, 'IncidntNum'])
+    df.loc[i, 'PdId'] = str(df.loc[i, 'PdId'])
+
+print(df.info())
+
+# df['IncidntNum'] = df['IncidntNum'].astype(str)
+# df['PdId'] = df['PdId'].astype(str)
 
 # initial segregation
 
@@ -84,4 +93,4 @@ df = pd.read_csv("policenew.csv")
 
 # df = df.insert(loc=0, column='SrNo', value=np.arange(len(df)))
 
-df.to_csv (r'C:\Users\parekh\Downloads\bytecamp\finalpolice.csv', index = None, header=True)
+df.to_csv (r'C:\Users\Acer\Downloads\bytecamp\criminal offense\intvalues.csv', index = None, header=True)
