@@ -4,9 +4,13 @@ import pandas as pd
 
 df = pd.read_csv("policefinal.csv")
 
-for i in range(len(df)):
-    df.loc[i, 'IncidntNum'] = str(df.loc[i, 'IncidntNum'])
-    df.loc[i, 'PdId'] = str(df.loc[i, 'PdId'])
+df['OriginalTime'] = pd.to_datetime(df['OriginalTime'])
+
+df['RoundedTime'] = df['OriginalTime'].dt.round('H').dt.hour
+
+# for i in range(len(df)):
+#     df.loc[i, 'IncidntNum'] = str(df.loc[i, 'IncidntNum'])
+#     df.loc[i, 'PdId'] = str(df.loc[i, 'PdId'])
 
 print(df.info())
 
